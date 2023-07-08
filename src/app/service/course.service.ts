@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable, from } from 'rxjs';
 import { Course } from '../model/course';
 import { concatMap, map } from 'rxjs/operators';
-import { convertSnaps } from './dn.utils';
+import { convertSnaps } from './db.utils';
 import { Lesson } from '../model/lesson';
 import firebase from "firebase";
 import OrderByDirection = firebase.firestore.OrderByDirection;
