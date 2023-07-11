@@ -18,8 +18,8 @@
       VIEW COURSE
     </button>
 
-    <ng-container>
-      <ng-container>
+    <ng-container *ngIf="(userService.role$ | async) as role">
+      <ng-container *ngIf="role.admin">
         <button mat-button class="mat-raised-button mat-accent"
                 (click)="editCourse(course)">
           EDIT

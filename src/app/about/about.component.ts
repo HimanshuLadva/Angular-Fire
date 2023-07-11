@@ -86,7 +86,7 @@ export class AboutComponent {
   }
 
   onReadCollecitonGroup() {
-     this.db.collectionGroup("courses", ref => ref.where("seqNo", "==", 1))
+     this.db.collectionGroup("lessons", ref => ref.where("seqNo", "==", 1))
      .get()
      .subscribe((snap) => {
       snap.forEach((doc) => {

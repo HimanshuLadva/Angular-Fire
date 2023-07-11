@@ -12,6 +12,7 @@ export class UserService {
     isLoggedIn$ :Observable<boolean>;
     isLoggedOut$:Observable<boolean>;
     pictureUrl$ :Observable<string>;
+    role$: Observable<any>;
     
     constructor(private afAuth:AngularFireAuth, private router:Router) {
         // afAuth.idToken.subscribe(jwt => console.log("jwt", jwt));
@@ -22,6 +23,10 @@ export class UserService {
         this.isLoggedOut$ = afAuth.authState.pipe(map(loggedIn => !loggedIn));
         
         this.pictureUrl$ = afAuth.authState.pipe(map(user => user ? user.photoURL:null));
+
+        this.role$ = this.afAuth.idTokenResult.pipe(
+            map(token => <any>token?.claims ?? {admin: false})
+        );
     }
     logout() {
         this.afAuth.signOut();
